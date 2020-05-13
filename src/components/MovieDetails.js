@@ -47,6 +47,7 @@ const MovieDetails = ({ movieId, onClose,movieItem }) => {
                 else {
                   e.target.innerHTML = 'Add to watch list'
                 }
+                e.preventDefault();
               }} >{context.watch_list[movieDetails.id] ? 'Remove from watch list' : 'Add to watch list'}</a>
             &nbsp;
 
@@ -57,6 +58,7 @@ const MovieDetails = ({ movieId, onClose,movieItem }) => {
                 else {
                   e.target.innerHTML = 'Add to favorites'
                 }
+                e.preventDefault();
               }}>{context.favorites_list[movieDetails.id] ? 'Remove from favorites' : 'Add to faviorates'}</a>
               <h5><br /> Trailers</h5>
               {movieVideos ? movieVideos.map((g, i) => {

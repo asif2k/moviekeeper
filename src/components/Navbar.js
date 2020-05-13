@@ -33,6 +33,7 @@ const Navbar = ({ onSearch }) => {
       <form className="form-inline my-2 my-lg-0" onSubmit={() => {
         main_navbar.current.classList.add("collapse")
         window.location.hash = `search#${searchText}`
+        window.location.reload();
       }}  >
         <div className="input-group mb-3">
           <input type="text" className="form-control" value={searchText} onChange={(e) => {

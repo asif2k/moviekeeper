@@ -1,5 +1,5 @@
 export const api_key = "fec8b5ab27b292a68294261bb21b04a5"
-export const base_uri = "http://api.themoviedb.org/3/"
+export const base_uri = "https://api.themoviedb.org/3/"
 export const images_uri = "https://image.tmdb.org/t/p/w300"
 
 // common and global functionality 
