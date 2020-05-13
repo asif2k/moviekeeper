@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 //components
 import Home from './components/Home';
@@ -15,11 +15,14 @@ const App = () => {
   return (<>
     <Navbar />
     <AppContext.Provider value={useContext(AppContext)}>
-    <BrowserRouter>
-      <Route path="/" exact component={Home} />      
-      <Route path="/favorites" exact strict component={Favorites} />
+    <HashRouter basename="index.html">         
+    <Route path="/favorites" exact strict component={Favorites} />
       <Route path="/watchlist" exact strict component={WatchList} />
-    </BrowserRouter>      
+      <Route path="/search" exact   component={Home} />       
+      <Route path="/" exact   component={Home} />       
+      <Route path="/search:text" component={Home}  />
+
+    </HashRouter>      
     </AppContext.Provider>
 
   </>

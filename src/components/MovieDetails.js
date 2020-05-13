@@ -36,7 +36,7 @@ const MovieDetails = ({ movieId, onClose,movieItem }) => {
               <h5 className="card-title">{movieDetails.title}({new Date(movieDetails.release_date).getFullYear()})</h5>
               <h6 className="card-subtitle mb-2 text-muted">{movieDetails.release_date}&nbsp;<br />
                 {movieDetails.genres ? movieDetails.genres.map((g, i) => {
-                  return <span key={i}>&nbsp;|&nbsp;<a href="#">{g.name}</a></span>
+                  return <span key={i}>&nbsp;|&nbsp;<a>{g.name}</a></span>
                 }) : ''}
               </h6>
               <p className="card-text" style={{ textAlign: "justify" }}>{movieDetails.overview}</p>
