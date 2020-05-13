@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../App'
+import  AppContext  from '../AppContext'
 import MovieList from './MovieList'
 const WatchList = ({ list, loading, fetchMore }) => {
   const context = useContext(AppContext);  

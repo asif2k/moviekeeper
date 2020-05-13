@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { AppContext } from '../App'
+import AppContext  from '../AppContext'
 import { getMoviePoster, fetchMovieDetails, fetchMovieVideos, getVideoSiteUrl } from '../Common'
 
-const MovieDetails = ({ movieId, onClose }) => {
+const MovieDetails = ({ movieId, onClose,movieItem }) => {
 
   const context = useContext(AppContext);
   //states for movie details and videos
@@ -11,7 +11,11 @@ const MovieDetails = ({ movieId, onClose }) => {
 
   // load movie details and videos when component mounted
   useEffect(() => {
-    console.log('movieId', movieId);
+    if(!movieId && movieItem){
+      movieId=movieItem.id;
+      setMovieDetails(movieItem);
+      return;
+    }
     fetchMovieDetails(movieId).then(res => res.json().then((data) => {
       setMovieDetails(data);
       fetchMovieVideos(movieId).then(res => res.json().then((data) => {        
@@ -53,7 +57,7 @@ const MovieDetails = ({ movieId, onClose }) => {
                 else {
                   e.target.innerHTML = 'Add to favorites'
                 }
-              }} >{context.favorites_list[movieDetails.id] ? 'Remove from favorites' : 'Add to faviorate'}</a>
+              }}>{context.favorites_list[movieDetails.id] ? 'Remove from favorites' : 'Add to faviorates'}</a>
               <h5><br /> Trailers</h5>
               {movieVideos ? movieVideos.map((g, i) => {
                 return (<span key={i}>&nbsp;<a target="_blank" href={getVideoSiteUrl(g)}>{g.site}</a><br /></span>)

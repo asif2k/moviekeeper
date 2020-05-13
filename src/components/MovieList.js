@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext,useState } from 'react';
 import { getMoviePoster } from '../Common'
-import { AppContext } from '../App'
+import  AppContext  from '../AppContext'
 import MovieDetails from './MovieDetails'
 
 const MovieList = ({ list, loading, fetchMore }) => {
@@ -33,19 +33,17 @@ const MovieList = ({ list, loading, fetchMore }) => {
       list_area.current.removeEventListener('scroll', infiniteScroll)
     };
   }, [])
-
- 
   
   return (
     <> 
       <div className="movie-list-area" ref={list_area}>
         <ul ref={movie_list} className='list-unstyled'>        
-          {list.map((item, index) => (
+          {list && list.map((item, index) => (
             <li key={index} className="media col-sm-6">
               <img src={getMoviePoster(item)}  onClick={()=>setMovieId(item.id)} />
               <div className="media-body">
                 <h6 className="media-title" onClick={()=>setMovieId(item.id)} > {item.title}</h6>
-                <span className={context.favorites_list[item.id] ? 'fill-star-icon' : 'star-icon'}
+                <span role="fav-icon" className={context.favorites_list[item.id] ? 'fill-star-icon' : 'star-icon'}
                   onClick={(e) => {
                     e.target.classList.remove("star-icon")
                     e.target.classList.remove("fill-star-icon")
@@ -59,6 +57,8 @@ const MovieList = ({ list, loading, fetchMore }) => {
               </div>
             </li>
           ))}
+
+
           {loading && <li className='media col-sm-6'>Loading...</li>}
         </ul>
       </div>

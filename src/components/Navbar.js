@@ -7,7 +7,7 @@ const Navbar = () => {
   const main_navbar = useRef()
     return (<div className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
        <a className="navbar-brand" href="#">
-    <img src="tickets.svg" width="26" height="26" className="d-inline-block align-top" alt=""/>
+    <img role="app-logo" src="tickets.svg" width="26" height="26" className="d-inline-block align-top" alt=""/>
     &nbsp;MovieKeeper
   </a>
 
@@ -21,7 +21,7 @@ const Navbar = () => {
           <a className="nav-link" href="/">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/favourites">My Favourites</a>
+          <a className="nav-link" href="/favorites">My Favorites</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/watchlist">Watch List</a>
